@@ -16,3 +16,12 @@ model Dish {
   category    String
   createdAt   DateTime @default(now())
 }
+
+model Reservation {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  guests    Int
+  date      DateTime
+  createdAt DateTime @default(now())
+}
