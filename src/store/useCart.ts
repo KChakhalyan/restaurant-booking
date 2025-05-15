@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-
+import { persist } from 'zustand/middleware';
 
 export type CartItem = {
     id: string;
@@ -14,15 +14,22 @@ type CartState = {
     count: () => number;
 };
 
-export const useCart = create<CartState>((set, get) => ({
-    items: [],
-    addToCart: (item) =>
-        set((state) => ({
-            items: [...state.items, item],
-        })),
-    removeFromCart: (id: string) =>
-        set((state) => ({
-            items: state.items.filter((item) => item.id !== id),
-        })),
-    count: () => get().items.length,
-}));
+export const useCart = create<CartState>()(
+    persist(
+        (set, get) => ({
+            items: [],
+            addToCart: (item) =>
+                set((state) => ({
+                    items: [...state.items, item],
+                })),
+            removeFromCart: (id) =>
+                set((state) => ({
+                    items: state.items.filter((item) => item.id !== id),
+                })),
+            count: () => get().items.length,
+        }),
+        {
+            name: 'cart-storage', // ключ в localStorage
+        }
+    )
+);
