@@ -7,7 +7,7 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                primary: "#e3b873",     // Золотистый акцент
+                primary: "#1e40af",     // Золотистый акцент
                 dark: "#0f0f0f",        // Тёмный фон
                 light: "#f5f5f5",       // Светлый фон
             },
