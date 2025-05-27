@@ -46,7 +46,7 @@ export default function MenuGrid({ dishes }: { dishes: Dish[] }) {
 
                         <button
                             onClick={() => handleAdd(dish)}
-                            className="mt-4 bg-primary text-black border border-primary cursor-pointer px-4 py-2 rounded hover:opacity-90"
+                            className="mt-4 bg-green-500 text-black border border-none cursor-pointer px-4 py-2 rounded hover:opacity-90"
                         >
                             Add to Cart
                         </button>
